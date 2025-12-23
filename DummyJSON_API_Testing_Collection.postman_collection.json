@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "0e1ca2ac-77ce-4082-a996-4a272269d8cd",
+		"name": "DummyJSON API Testing Pack",
+		"description": "# ReqRes API Testing Pack v0.1\n\n## Purpose\n\nThis collection provides a beginner-friendly, interview-ready set of API tests for practicing core functional and negative scenarios. It covers authentication and user management using the public ReqRes REST API.\n\nIt is designed for:\n\n- Manual testers transitioning to API testing\n    \n- QA professionals preparing for interviews\n    \n- Career re-entry candidates refreshing practical skills\n    \n\n## How to Use\n\n1. Import this collection into Postman.\n    \n2. Import the associated environment `ReqRes_Env`.\n    \n3. Ensure the environment variable `base_url` is set to: [https://reqres.in/api](https://reqres.in/api)\n    \n4. Run individual requests or entire folders as needed.\n    \n\n## Folder Overview\n\n### 1\\. Authentication\n\n- **Login – Valid Credentials:** Positive scenario with correct email & password\n    \n- **Login – Invalid Credentials:** Negative scenario with missing password\n    \n\n### 2\\. User Management\n\n- **Get Users – Valid:** Fetch a valid page of users\n    \n- **Get Users – Invalid Page:** Fetch an invalid page to test edge case handling\n    \n\n### 3\\. Environment Setup\n\n- Holds environment variables: `base_url` and `token`\n    \n\n## Features\n\n- Positive and negative test cases for each request\n    \n- Minimal and clear test scripts (status code & response validation)\n    \n- Reusable environment setup for consistent testing\n    \n- Designed for practice, learning, and interview preparation\n    \n\n## Author\n\nSamina Moiyadi\n\n## Version\n\nv0.1 – initial practice pack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47597872"
+	},
+	"item": [
+		{
+			"name": "1. Users",
+			"item": [
+				{
+					"name": "Get Users – Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains users array\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.users).to.be.an(\"array\").that.is.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users – Single Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains a user object\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users - Invalid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message is present\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.exist;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/99999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"99999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Posts",
+			"item": [
+				{
+					"name": "Get Posts - Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains posts array\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.posts).to.be.an(\"array\").that.is.not.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post – Invalid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message is present\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.exist;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/99999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								"99999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
