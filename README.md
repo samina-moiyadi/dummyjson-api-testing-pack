@@ -29,8 +29,8 @@ DummyJSON API Testing Pack
 │ ├── Get Single User – Valid
 │ └── Get Single User – Invalid
 └── Posts
-├── Get Posts – Valid
-└── Get Post – Invalid
+  ├── Get Posts – Valid
+  └── Get Post – Invalid
 
 ---
 
