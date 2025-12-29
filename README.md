@@ -9,6 +9,7 @@ It demonstrates positive and negative testing with reusable environment variable
 
 This collection covers:
 
+- **Authentication** – Login (valid & invalid scenarios)
 - **Users** – Retrieve user lists and individual users (valid & invalid scenarios)  
 - **Posts** – Retrieve posts (valid & invalid scenarios)
 
@@ -24,6 +25,9 @@ Each request includes:
 ## Folder Structure
 
 DummyJSON API Testing Pack
+├── Authentication
+│ ├── Login – Valid Credentials
+│ ├── Login – Invalid Credentials
 ├── Users
 │ ├── Get Users – Valid
 │ ├── Get Single User – Valid
@@ -56,6 +60,11 @@ Using environment variables allows you to reuse requests across different enviro
 ---
 
 ## Positive & Negative Testing Examples
+
+**Authentication**
+
+- Positive: `Login - Valid Credentails` → Status 200, returns user information with access token
+- Negative: `Login - Invalid Credentails` → Status 400, error message present
 
 **Users**
 
