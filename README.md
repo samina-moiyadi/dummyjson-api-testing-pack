@@ -23,7 +23,7 @@ Each request includes:
 ---
 
 ## Folder Structure
-
+```text
 DummyJSON API Testing Pack
 ├── Authentication
 │ ├── Login – Valid Credentials
@@ -35,7 +35,7 @@ DummyJSON API Testing Pack
 └── Posts
   ├── Get Posts – Valid
   └── Get Post – Invalid
-
+```
 ---
 
 ## Environment Variables
